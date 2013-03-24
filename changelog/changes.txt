@@ -1,0 +1,14 @@
+**************************************************************
+ SSRSE - SunShine RO-ServerEmulator
+**************************************************************
+ SSROSE Changelog Rev. 1
+**************************************************************
+[17/03/2013]
+-cleaned the whole project a little for more overview.
+-Added conf/battle/battle.conf
+-Added conf/battle/battleground.conf
+-Added conf/battle/client.conf
+-Added conf/battle/drops.conf
+-Added conf/battle/exp.conf
+-Added conf/battle/feature.conf
+-Added conf/battle/gm.conf
