@@ -1,8 +1,13 @@
 **************************************************************
  SSRSE - SunShine RO-ServerEmulator
 **************************************************************
- SSROSE Changelog Rev. 2
+ SSROSE Changelog Rev. 3
 **************************************************************
+[06/05/2013]
+-Added conf/battle/misc.conf
+-Added conf/battle/monster.conf
+-Added conf/battle/party.conf
+
 [21/04/2013]
 -Added conf/battle/guild.conf
 -Added conf/battle/homunc.conf
