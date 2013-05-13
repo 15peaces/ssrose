@@ -1,8 +1,13 @@
 **************************************************************
  SSRSE - SunShine RO-ServerEmulator
 **************************************************************
- SSROSE Changelog Rev. 3
+ SSROSE Changelog Rev. 9
 **************************************************************
+[13/05/2013]
+-Added conf/battle/pet.conf
+-Added conf/battle/player.conf
+-Added conf/battle/skill.conf
+
 [06/05/2013]
 -Added conf/battle/misc.conf
 -Added conf/battle/monster.conf
