@@ -1,8 +1,19 @@
 **************************************************************
  SSRSE - SunShine RO-ServerEmulator
 **************************************************************
- SSROSE Changelog Rev. 9
+ SSROSE Changelog Rev. 10
 **************************************************************
+[22/05/2013]
+-Updated client.conf
+-Updated gm.conf
+-Updated items.conf
+-Updated monster.conf
+-Updated player.conf
+-Updated skill.conf
+-Added Status.conf
+-Added import-templates (needed for Athena compatibillity)
+-Added mapflag files (Maybe I'll change them later... But first I'll try to use them in eAthena format...)
+
 [13/05/2013]
 -Added conf/battle/pet.conf
 -Added conf/battle/player.conf
