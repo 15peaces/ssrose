@@ -132,9 +132,9 @@ Const MAX_MEMOPOINTS:Int = 3
 Const MAX_FAME_LIST:Int = 10
 
 'Limits To avoid ID collision with other game objects
-Const START_ACCOUNT_NUM:Int		 = 2000000
-Const END_ACCOUNT_NUM:Int		 = 100000000
-Const define START_CHAR_NUM:Int	 = 150000
+Const START_ACCOUNT_NUM:Int	 = 2000000
+Const END_ACCOUNT_NUM:Int	 = 100000000
+Const START_CHAR_NUM:Int	 = 150000
 
 'Guilds
 Const MAX_GUILDMES1:Int = 60
@@ -176,7 +176,7 @@ Const IT_DELAYCONSUME:Int = 11	'11 ARMORTM
 							'15 GUN
 							'16 AMMO
 							'17 THROWWEAPON
-Const IT_CASH:Int = 18,			'18 CASH_POINT_ITEM
+Const IT_CASH:Int = 18			'18 CASH_POINT_ITEM
 							'19 CANNONBALL
 Const IT_MAX:Int = 20 
 
@@ -196,9 +196,9 @@ Type item
 	Field nameid:Short
 	Field amount:Short
 	Field equip:Short 'location(s) where item is equipped (using enum equip_pos For bitmasking)
-	Field identify:Byte
-	Field refine:Byte
-	Field attribute:Byte
+	Field identify:Int
+	Field refine:Int
+	Field attribute:Int
 	Field card:Short[MAX_SLOTS]
 	Field expire_time:Int
 EndType
@@ -207,3 +207,566 @@ Type point
 	Field map:Short
 	Field xy:Short[2]
 EndType
+
+'TODO: ALLE e_skill_flag 's durch int variablen ersetzen!
+Const SKILL_FLAG_PERMANENT:Int	 = 1
+Const SKILL_FLAG_TEMPORARY:Int	 = 2
+Const SKILL_FLAG_PLAGIARIZED:Int	 = 3
+Const SKILL_FLAG_REPLACED_LV_0:Int = 4 'temporary skill overshadowing permanent skill of level 'N - SKILL_FLAG_REPLACED_LV_0'
+
+Type s_skill
+	Field id:Short
+	Field lv:Int
+	Field flag:Int 'see enum e_skill_flag
+EndType
+
+Type global_reg
+	Field str:String
+	Field value:String
+EndType
+
+'Holds array of Global registries, used by the char server And converter.
+Type accreg
+	Field account_id:Int
+	Field char_id:Int
+	Field reg_num:Int
+	'TODO: struct global_reg reg[MAX_REG_NUM];
+EndType
+
+'For saving status changes across sessions.
+Type status_change_data
+	Field mtype:Short 'SC_type
+	Field val1:Long
+	Field val2:Long
+	Field val3:Long
+	Field val4:Long
+	Field tick:Long 'Remaining duration.
+EndType
+
+Type storage_data
+	Field storage_amount:Int
+	'TODO: struct item items[MAX_STORAGE];
+EndType
+
+Type guild_storage
+	Field dirty:Int
+	Field guild_id:Int
+	Field storage_status:Short
+	Field storage_amount:Short
+	'TODO: struct item items[MAX_GUILD_STORAGE];
+EndType
+
+Type s_pet
+	Field account_id:Int
+	Field char_id:Int
+	Field pet_id:Int
+	Field class:Short
+	Field level:Short
+	Field egg_id:Short 'pet egg id
+	Field equip:Short 'pet equip name_id
+	Field intimate:Short 'pet friendly
+	Field hungry:Short 'pet hungry
+	Field name:String
+	Field rename_flag:String
+	Field incuvate:String
+EndType
+
+Type s_homunculus
+	Field name:String
+	Field hom_id:Int
+	Field char_id:Int
+	Field class:Short
+	Field hp:Int
+	Field max_hp:Int
+	Field sp:Int
+	Field max_sp:Int
+	Field intimacy:Int
+	Field hunger:Short
+	'TODO: struct s_skill hskill[MAX_HOMUNSKILL]; //albator
+	Field skillpts:Short
+	Field level:Short
+	Field mexp:Int
+	Field rename_flag:Short
+	Field vaporize:Short
+	Field str:Int
+	Field agi:Int
+	Field vit:Int
+	Field int_:Int
+	Field dex:Int
+	Field luk:Int
+EndType
+
+Type s_mercenary
+	Field mercenary_id:Int
+	Field char_id:Int
+	Field class:Short
+	Field hp:Int
+	Field sp:Int
+	Field kill_count:Int
+	Field life_time:Int
+EndType
+
+Type s_friend
+	Field account_id:Int
+	Field char_id:Int
+	Field name:String
+EndType
+
+Type hotkey 'only needed if HOTKEY_SAVING = true
+	Field id:Int
+	Field lv:Short
+	Field mtype:Int '0: item, 1: skill
+EndType
+
+Type mmo_charstatus
+	Field char_id:Int
+	Field account_id:Int
+	Field partner_id:Int
+	Field father:Int
+	Field mother:Int
+	Field child:Int
+
+	Field base_exp:Int
+	Field job_exp:Int
+	Field zeny:Int
+
+	Field class:Int
+	Field status_point:Int
+	Field skill_point:Int
+	Field hp:Int
+	Field max_hp:Int
+	Field sp:Int
+	Field max_sp:Int
+	Field option:Int
+	Field manner:Short
+	Field karma:Int
+	Field hair:Short
+	Field hair_color:Short
+	Field clothes_color:Short
+	Field party_id:Int
+	Field guild_id:Int
+	Field pet_id:Int
+	Field hom_id:Int
+	Field mer_id:Int
+	Field fame:Int
+
+	' Mercenary Guilds Rank
+	Field arch_faith:Int
+	Field arch_calls:Int
+	Field spear_faith:Int
+	Field spear_calls:Int
+	Field sword_faith:Int
+	Field sword_calls:Int
+
+	Field weapon:Short 'weapon_type
+	Field shield:Short 'view-id
+	Field head_top:Short
+	Field head_mid:Short
+	Field head_bottom:Short
+	Field robe:Short
+
+	Field name:String
+	Field base_level:Short
+	Field job_level:Short
+	Field str:Short
+	Field agi:Short
+	Field vit:Short
+	Field int_:Short
+	Field dex:Short
+	Field luk:Short
+	Field slot:Int
+	Field sex:Int
+
+	Field mapip:Int
+	Field mapport:Short
+
+	'TODO: struct point last_point,save_point,memo_point[MAX_MEMOPOINTS];
+	'TODO: struct item inventory[MAX_INVENTORY],cart[MAX_CART];
+	'TODO: struct storage_data storage;
+	'TODO: struct s_skill skill[MAX_SKILL];
+
+	'TODO: struct s_friend friends[MAX_FRIENDS]; //New friend system [Skotlex]
+
+	'TODO: struct hotkey hotkeys[MAX_HOTKEYS];
+
+	Field show_equip:Byte
+	Field rename:Int
+
+	Field delete_date:Int
+EndType
+
+'TODO: mail_status
+'typedef enum mail_status {
+'	MAIL_NEW,
+'	MAIL_UNREAD,
+'	MAIL_READ,
+'} mail_status;
+
+Type mail_message
+	Field id:Int
+	Field send_id:Int
+	Field send_name:String
+	Field dest_id:Int
+	Field dest_name:String
+	Field title:String
+	Field body:String
+
+	'TODO: mail_status status;
+	Field timestamp:Int 'marks when the message was sent
+
+	Field zeny:Int
+	'TODO: struct item item;
+EndType
+
+Type mail_data
+	Field amount:Short
+	Field full:Byte
+	Field unchecked:Short
+	Field unread:Short
+	'TODO: struct mail_message msg[MAIL_MAX_INBOX];
+EndType
+
+Type auction_data
+	Field auction_id:Int
+	Field seller_id:Int
+	Field seller_name:String
+	Field buyer_id:Int
+	Field buyer_name:String
+	
+	'TODO struct item item;
+	' This data is required For searching, as itemdb is Not read by char server
+	Field item_name:String
+	Field mtype:Short
+
+	Field hours:Short
+	Field price:Int
+	Field buynow:Int
+	Field timestamp:Int 'auction's end time
+	Field auction_end_timer:Int
+EndType
+
+Type registry
+	Field global_num:Int
+	'TODO struct global_reg Global[GLOBAL_REG_NUM];
+	Field account_num:Int
+	'TODO struct global_reg account[ACCOUNT_REG_NUM];
+	Field account2_num:Int
+	'TODO struct global_reg account2[ACCOUNT_REG2_NUM];
+EndType
+
+Type party_member
+	Field account_id:Int
+	Field char_id:Int
+	Field name:String
+	Field class:Short
+	Field map:Short
+	Field lv:Short
+	Field leader:Byte
+	Field online:Byte
+EndType
+
+Type party
+	Field party_id:Int
+	Field name:String
+	Field count:Short 'Count of online characters.
+	Field mexp:Byte 'Party-Share (round-robin)
+	Field item:Byte 'pickup style: shared
+	'TODO: struct party_member member[MAX_PARTY];
+EndType
+
+'TODO: struct map_session_data;
+
+Type guild_member
+	Field account_id:Int
+	Field char_id:Int
+	Field hair:Short
+	Field hair_color:Short
+	Field gender:Short
+	Field class_,lv:Short
+	Field mexp:Int
+	Field exp_payper:Int
+	Field online:Short
+	Field position:Short
+	Field name:String
+	'TODO: struct map_session_data *sd;
+	Field modified:Byte
+EndType
+
+Type guild_position
+	Field name:String
+	Field mode:Int
+	Field exp_mode:Int
+	Field modified:Byte
+EndType
+
+Type guild_alliance
+	Field opposition:Int
+	Field guild_id:Int
+	Field name:String
+EndType
+
+Type guild_expulsion
+	Field name:String
+	Field mes:String 'TODO: max. should be 40 bytes...
+	Field account_id:Int
+EndType
+
+Type guild_skill
+	Field id:Int
+	Field lv:Int
+EndType
+
+Type guild
+	Field guild_id:Int
+	Field guild_lv:Short
+	Field connect_member:Short
+	Field max_member:Short
+	Field average_lv:Short
+	Field mexp:Int
+	Field next_exp:Int
+	Field skill_point:Int
+	Field name:String
+	Field master:String
+	'TODO: struct guild_member member[MAX_GUILD];
+	'TODO: struct guild_position position[MAX_GUILDPOSITION];
+	Field mes1:String
+	Field mes2:String
+	Field emblem_len:Int
+	Field emblem_id:Int
+	Field emblem_data:Byte[2048]
+	'TODO: struct guild_alliance alliance[MAX_GUILDALLIANCE];
+	'TODO: struct guild_expulsion expulsion[MAX_GUILDEXPULSION];
+	'TODO: struct guild_skill skill[MAX_GUILDSKILL];
+
+	Field save_flag:Short; 'For TXT saving
+EndType
+
+Type guild_castle
+	Field castle_id:Int
+	Field mapindex:Int
+	Field castle_name:String
+	Field castle_event:String
+	Field guild_id:Int
+	Field economy:Int
+	Field defense:Int
+	Field triggerE:Int
+	Field triggerD:Int
+	Field nextTime:Int
+	Field payTime:Int
+	Field createTime:Int
+	Field visibleC:Int
+	'TODO: struct {
+	'TODO: 	unsigned visible : 1;
+	'TODO: 	Int id; // Object id
+	'TODO: } guardian[MAX_GUARDIANS];
+	Field temp_guardians:Int Ptr 'ids of temporary guardians (mobs)
+	Field temp_guardians_max:Int
+EndType
+
+Type fame_list
+	Field id:Int
+	Field fame:Int
+	Field name:String
+EndType
+
+
+Const GBI_EXP:Int		 = 1
+Const GBI_GUILDLV:Int	 = 2
+Const GBI_SKILLPOINT:Int = 3
+Const GBI_SKILLLV:Int	 = 4
+
+
+Const GMI_POSITION		 = 0
+Const GMI_EXP			 = 1
+Const GMI_HAIR			 = 2
+Const GMI_HAIR_COLOR	 = 3
+Const GMI_GENDER		 = 4
+Const GMI_CLASS		 = 5
+Const GMI_LEVEL		 = 6
+
+Const GD_SKILLBASE:Int		 = 10000
+Const GD_APPROVAL:Int		 = 10000
+Const GD_KAFRACONTRACT:Int	 = 10001
+Const GD_GUARDRESEARCH:Int	 = 10002
+Const GD_GUARDUP:Int		 = 10003
+Const GD_EXTENSION:Int		 = 10004
+Const GD_GLORYGUILD:Int		 = 10005
+Const GD_LEADERSHIP:Int		 = 10006
+Const GD_GLORYWOUNDS:Int	 = 10007
+Const GD_SOULCOLD:Int		 = 10008
+Const GD_HAWKEYES:Int		 = 10009
+Const GD_BATTLEORDER:Int	 = 10010
+Const GD_REGENERATION:Int	 = 10011
+Const GD_RESTORE:Int		 = 10012
+Const GD_EMERGENCYCALL:Int	 = 10013
+Const GD_DEVELOPMENT:Int	 = 10014
+'Below skill disabled Until we find out If its still used.
+'Const GD_ITEMEMERGENCYCALL:int= 10015
+Const GD_MAX:Int			 = 10015
+
+
+'These mark the ID of the jobs, as expected by the client.
+Const JOB_NOVICE:Int			 = 0
+Const JOB_SWORDMAN:Int			 = 1
+Const JOB_MAGE	:Int				 = 2
+Const JOB_ARCHER:Int			 = 3
+Const JOB_ACOLYTE:Int			 = 4
+Const JOB_MERCHANT:Int			 = 5
+Const JOB_THIEF:Int			 = 6
+Const JOB_KNIGHT:Int			 = 7
+Const JOB_PRIEST:Int			 = 8
+Const JOB_WIZARD:Int			 = 9
+Const JOB_BLACKSMITH:Int		 = 10
+Const JOB_HUNTER:Int			 = 11
+Const JOB_ASSASSIN:Int			 = 12
+Const JOB_KNIGHT2:Int			 = 13
+Const JOB_CRUSADER:Int			 = 14
+Const JOB_MONK:Int				 = 15
+Const JOB_SAGE:Int				 = 16
+Const JOB_ROGUE:Int			 = 17
+Const JOB_ALCHEMIST:Int			 = 18
+Const JOB_BARD:Int				 = 19
+Const JOB_DANCER:Int			 = 20
+Const JOB_CRUSADER2:Int			 = 21
+Const JOB_WEDDING:Int			 = 22
+Const JOB_SUPER_NOVICE:Int		 = 23
+Const JOB_GUNSLINGER:Int		 = 24
+Const JOB_NINJA:Int			 = 25
+Const JOB_XMAS:Int				 = 26
+Const JOB_SUMMER:Int			 = 27
+Const JOB_HANBOK:Int			 = 28
+Const JOB_MAX_BASIC:Int			 = 29
+
+Const JOB_NOVICE_HIGH:Int		 = 4001
+Const JOB_SWORDMAN_HIGH:Int		 = 4002
+Const JOB_MAGE_HIGH:Int			 = 4003
+Const JOB_ARCHER_HIGH:Int		 = 4004
+Const JOB_ACOLYTE_HIGH:Int		 = 4005
+Const JOB_MERCHANT_HIGH:Int		 = 4006
+Const JOB_THIEF_HIGH:Int		 = 4007
+Const JOB_LORD_KNIGHT:Int		 = 4008
+Const JOB_HIGH_PRIEST:Int		 = 4009
+Const JOB_HIGH_WIZARD:Int		 = 4010
+Const JOB_WHITESMITH:Int		 = 4011
+Const JOB_SNIPER:Int			 = 4012
+Const JOB_ASSASSIN_CROSS:Int		 = 4013
+Const JOB_LORD_KNIGHT2:Int		 = 4014
+Const JOB_PALADIN:Int			 = 4015
+Const JOB_CHAMPION:Int			 = 4016
+Const JOB_PROFESSOR:Int			 = 4017
+Const JOB_STALKER:Int			 = 4018
+Const JOB_CREATOR:Int			 = 4019
+Const JOB_CLOWN:Int			 = 4020
+Const JOB_GYPSY:Int			 = 4021
+Const JOB_PALADIN2:Int			 = 4022
+
+Const JOB_BABY:Int				 = 4023
+Const JOB_BABY_SWORDMAN:Int		 = 4024
+Const JOB_BABY_MAGE:Int			 = 4025
+Const JOB_BABY_ARCHER:Int		 = 4026
+Const JOB_BABY_ACOLYTE:Int		 = 4027
+Const JOB_BABY_MERCHANT:Int		 = 4028
+Const JOB_BABY_THIEF:Int		 = 4029
+Const JOB_BABY_KNIGHT:Int		 = 4030
+Const JOB_BABY_PRIEST:Int		 = 4031
+Const JOB_BABY_WIZARD:Int		 = 4032
+Const JOB_BABY_BLACKSMITH:Int	 = 4033
+Const JOB_BABY_HUNTER:Int		 = 4034
+Const JOB_BABY_ASSASSIN:Int		 = 4035
+Const JOB_BABY_KNIGHT2:Int		 = 4036
+Const JOB_BABY_CRUSADER:Int		 = 4037
+Const JOB_BABY_MONK:Int			 = 4038
+Const JOB_BABY_SAGE:Int			 = 4039
+Const JOB_BABY_ROGUE:Int		 = 4040
+Const JOB_BABY_ALCHEMIST:Int		 = 4041
+Const JOB_BABY_BARD:Int			 = 4042
+Const JOB_BABY_DANCER:Int		 = 4043
+Const JOB_BABY_CRUSADER2:Int		 = 4044
+Const JOB_SUPER_BABY:Int		 = 4045
+
+Const JOB_TAEKWON:Int			 = 4046
+Const JOB_STAR_GLADIATOR:Int		 = 4047
+Const JOB_STAR_GLADIATOR2:Int	 = 4048
+Const JOB_SOUL_LINKER:Int		 = 4049
+
+Const JOB_GANGSI:Int			 = 4050
+Const JOB_DEATH_KNIGHT:Int		 = 4051
+Const JOB_DARK_COLLECTOR:Int		 = 4052
+
+Const JOB_RUNE_KNIGHT:Int		 = 4054
+Const JOB_WARLOCK:Int			 = 4055
+Const JOB_RANGER:Int			 = 4056
+Const JOB_ARCH_BISHOP:Int		 = 4057
+Const JOB_MECHANIC:Int			 = 4058
+Const JOB_GUILLOTINE_CROSS:Int	 = 4059
+
+Const JOB_RUNE_KNIGHT_T:Int		 = 4060
+Const JOB_WARLOCK_T:Int		 = 4061
+Const JOB_RANGER_T:Int			 = 4062
+Const JOB_ARCH_BISHOP_T:Int		 = 4063
+Const JOB_MECHANIC_T:Int		 = 4064
+Const JOB_GUILLOTINE_CROSS_T:Int	 = 4065
+
+Const JOB_ROYAL_GUARD:Int		 = 4066
+Const JOB_SORCERER:Int			 = 4067
+Const JOB_MINSTREL:Int			 = 4068
+Const JOB_WANDERER:Int			 = 4069
+Const JOB_SURA:Int				 = 4070
+Const JOB_GENETIC:Int			 = 4071
+Const JOB_SHADOW_CHASER:Int		 = 4072
+
+Const JOB_ROYAL_GUARD_T:Int		 = 4073
+Const JOB_SORCERER_T:Int		 = 4074
+Const JOB_MINSTREL_T:Int		 = 4075
+Const JOB_WANDERER_T:Int		 = 4076
+Const JOB_SURA_T:Int			 = 4077
+Const JOB_GENETIC_T:Int			 = 4078
+Const JOB_SHADOW_CHASER_T:Int	 = 4079
+
+Const JOB_RUNE_KNIGHT2:Int		 = 4080
+Const JOB_RUNE_KNIGHT_T2:Int		 = 4081
+Const JOB_ROYAL_GUARD2:Int		 = 4082
+Const JOB_ROYAL_GUARD_T2:Int		 = 4083
+Const JOB_RANGER2:Int			 = 4084
+Const JOB_RANGER_T2:Int			 = 4085
+Const JOB_MECHANIC2:Int			 = 4086
+Const JOB_MECHANIC_T2:Int		 = 4087
+Const JOB_RUNE_KNIGHT3:Int		 = 4088
+Const JOB_RUNE_KNIGHT_T3:Int		 = 4089
+Const JOB_RUNE_KNIGHT4:Int		 = 4090
+Const JOB_RUNE_KNIGHT_T4:Int		 = 4091
+Const JOB_RUNE_KNIGHT5:Int		 = 4092
+Const JOB_RUNE_KNIGHT_T5:Int		 = 4093
+Const JOB_RUNE_KNIGHT6:Int		 = 4094
+Const JOB_RUNE_KNIGHT_T6:Int		 = 4095
+
+Const JOB_BABY_RUNE:Int			 = 4096
+Const JOB_BABY_WARLOCK:Int		 = 4097
+Const JOB_BABY_RANGER:Int		 = 4098
+Const JOB_BABY_BISHOP:Int		 = 4099
+Const JOB_BABY_MECHANIC:Int		 = 4100
+Const JOB_BABY_CROSS:Int		 = 4101
+Const JOB_BABY_GUARD:Int		 = 4102
+Const JOB_BABY_SORCERER:Int		 = 4103
+Const JOB_BABY_MINSTREL:Int		 = 4104
+Const JOB_BABY_WANDERER:Int		 = 4105
+Const JOB_BABY_SURA:Int			 = 4106
+Const JOB_BABY_GENETIC:Int		 = 4107
+Const JOB_BABY_CHASER:Int		 = 4108
+
+Const JOB_BABY_RUNE2:Int		 = 4109
+Const JOB_BABY_GUARD2:Int		 = 4110
+Const JOB_BABY_RANGER2:Int		 = 4111
+Const JOB_BABY_MECHANIC2:Int		 = 4112
+
+Const JOB_SUPER_NOVICE_E:Int		 = 4190
+Const JOB_SUPER_BABY_E:Int		 = 4191
+
+Const JOB_KAGEROU:Int			 = 4211
+Const JOB_OBORO:Int			 = 4212
+
+Const JOB_MAX:Int				 = 4213
+
+Const SEX_FEMALE:Int	 = 0
+Const SEX_MALE:Int		 = 1
+Const SEX_SERVE:Int	 = 2

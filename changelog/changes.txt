@@ -1,8 +1,11 @@
 **************************************************************
  SSRSE - SunShine RO-ServerEmulator
 **************************************************************
- SSROSE Changelog Rev. 11
+ SSROSE Changelog Rev. 12
 **************************************************************
+[01/06/2013]
+-done with mmo.bmx for now
+
 [31/05/2013]
 -decided to try to use all athena files for now (full compatibillity)
 -wrote some src beginnings (CharServer_SQL.bmx,char.bmx,core.bmx,mmo.bmx)
