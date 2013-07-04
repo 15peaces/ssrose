@@ -4,7 +4,6 @@ endrem
 
 'SuperStrict
 
-'Imports (not written yet)
 Import "../include/core.bmx"
 
 Const MAX_MAP_SERVERS:Int = 30

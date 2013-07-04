@@ -1,8 +1,12 @@
 **************************************************************
  SSRSE - SunShine RO-ServerEmulator
 **************************************************************
- SSROSE Changelog Rev. 12
+ SSROSE Changelog Rev. 13
 **************************************************************
+[04/07/2013]
+-Added some Functions and Consts to get pre-support for colored console output.
+-Added version.bmx with some Consts to hold the version infos.
+
 [01/06/2013]
 -done with mmo.bmx for now
 
