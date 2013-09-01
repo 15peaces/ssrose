@@ -6,6 +6,7 @@ endrem
 
 Import "mmo.bmx"
 Import "version.bmx"
+Import "showmsg.bmx"
 
 'TODO: ALLE SERVER_STATE 's durch int variablen ersetzen!
 
