@@ -74,35 +74,35 @@ EndIf
 
 Const MAX_MAP_PER_SERVER:Int	 = 1500
 Const MAX_INVENTORY:Int		 = 100
-Const MAX_CHARS:Int		 = 9 'Max number of characters per account. Note that changing this setting alone is Not enough If the client is Not hexed To support more characters as well.
-'Number of slots carded equipment can have. Never set To less than 4 as they are also used To keep the data of forged items/equipment.
-'Note: The client seems unable To receive data For more than 4 slots due To all related packets having a fixed size.
-Const MAX_SLOTS:Int		 = 4
+Const MAX_CHARS:Int		 	 = 9 'Max number of characters per account. Note that changing this setting alone is Not enough If the client is Not hexed To support more characters as well.
+							'Number of slots carded equipment can have. Never set To less than 4 as they are also used To keep the data of forged items/equipment.
+							'Note: The client seems unable To receive data For more than 4 slots due To all related packets having a fixed size.
+Const MAX_SLOTS:Int			 = 4
 Const MAX_AMOUNT:Int		 = 30000 'Max amount of a single stacked item
 Const MAX_ZENY:Int			 = 1000000000
 Const MAX_FAME:Int			 = 1000000000
 Const MAX_CART:Int			 = 100
-Const MAX_SKILL:Int		 = 3036
-Const GLOBAL_REG_NUM:Int	 = 256
+Const MAX_SKILL:Int			 = 3036
+Const GLOBAL_REG_NUM:Int		 = 256
 Const ACCOUNT_REG_NUM:Int	 = 64
 Const ACCOUNT_REG2_NUM:Int	 = 16
 Const MAX_REG_NUM:Int		 = 256 'Should hold the Max of Global/ACCOUNT/ACCOUNT2 (needed For some arrays that hold all three)
 Const DEFAULT_WALK_SPEED:Int	 = 150
-Const MIN_WALK_SPEED:Int	 = 0
-Const MAX_WALK_SPEED:Int	 = 1000
+Const MIN_WALK_SPEED:Int		 = 0
+Const MAX_WALK_SPEED:Int		 = 1000
 Const MAX_STORAGE:Int		 = 600
 Const MAX_GUILD_STORAGE:Int	 = 600
-Const MAX_PARTY:Int		 = 12
-Const MAX_GUILD:Int		 = 76 '16+10*6
+Const MAX_PARTY:Int			 = 12
+Const MAX_GUILD:Int			 = 76 '16+10*6
 Const MAX_GUILDPOSITION:Int	 = 20
 Const MAX_GUILDEXPULSION:Int	 = 32
 Const MAX_GUILDALLIANCE:Int	 = 16
-Const MAX_GUILDSKILL:Int	 = 15
+Const MAX_GUILDSKILL:Int		 = 15
 Const MAX_GUILDCASTLE:Int	 = 34
-Const MAX_GUILDLEVEL:Int	 = 50
+Const MAX_GUILDLEVEL:Int		 = 50
 Const MAX_GUARDIANS:Int		 = 8	'Local Max per castle.
 Const MAX_QUEST_DB:Int		 = 2000 'Max quests that the server will Load
-Const MAX_QUEST_OBJECTIVES:Int= 3 'Max quest objectives For a quest
+Const MAX_QUEST_OBJECTIVES:Int = 3 'Max quest objectives For a quest
 
 'For produce
 Const MIN_ATTRIBUTE:Int		 = 0
@@ -126,7 +126,7 @@ Const MAP_NAME_LENGTH:Int	 = 12 '(11 + 1)
 Global map_name_length_ext:Int= MAP_NAME_LENGTH + 4
 
 Const MAX_FRIENDS:Int	 = 40
-Const MAX_MEMOPOINTS:Int = 3
+Const MAX_MEMOPOINTS:Int	 = 3
 
 'Size of the fame list arrays.
 Const MAX_FAME_LIST:Int = 10
@@ -134,7 +134,7 @@ Const MAX_FAME_LIST:Int = 10
 'Limits To avoid ID collision with other game objects
 Const START_ACCOUNT_NUM:Int	 = 2000000
 Const END_ACCOUNT_NUM:Int	 = 100000000
-Const START_CHAR_NUM:Int	 = 150000
+Const START_CHAR_NUM:Int		 = 150000
 
 'Guilds
 Const MAX_GUILDMES1:Int = 60
@@ -142,33 +142,33 @@ Const MAX_GUILDMES2:Int = 120
 
 'Base Homun skill.
 Const HM_SKILLBASE:Int			 = 8001
-Const MAX_HOMUNSKILL:Int		 = 16
+Const MAX_HOMUNSKILL:Int			 = 16
 Const MAX_HOMUNCULUS_CLASS:Int	 = 16
 Const HM_CLASS_BASE:Int			 = 6001
 Global hm_class_max:Int			 = HM_CLASS_BASE + MAX_HOMUNCULUS_CLASS - 1
 
 'Mail System
-Const MAIL_MAX_INBOX:Int	 = 30
+Const MAIL_MAX_INBOX:Int		 = 30
 Const MAIL_TITLE_LENGTH:Int	 = 40
 Const MAIL_BODY_LENGTH:Int	 = 200
 
 'Mercenary System
 Const MC_SKILLBASE:Int		 = 8201
 Const MAX_MERCSKILL:Int		 = 40
-Const MAX_MERCENARY_CLASS:Int = 44
+Const MAX_MERCENARY_CLASS:Int	 = 44
 
 'TODO: ALLE item_types 's durch int variablen ersetzen!
-Const IT_HEALING:Int = 0		'0  HEAL
-Const IT_UNKNOWN:Int = 1		'1  SCHANGE
-Const IT_USABLE:Int = 2			'2  SPECIAL
-Const IT_ETC:Int = 3			'3  EVENT
-Const IT_WEAPON:Int = 4			'4  ARMOR
-Const IT_ARMOR:Int = 5			'5  WEAPON
-Const IT_CARD:Int = 6			'6  CARD
-Const IT_PETEGG:Int = 7			'7  QUEST
-Const IT_PETARMOR:Int = 8		'8  BOW
-Const IT_UNKNOWN2:Int = 9		'9  BOTHHAND
-Const IT_AMMO:Int = 10			'10 ARROW
+Const IT_HEALING:Int	 = 0		'0  HEAL
+Const IT_UNKNOWN:Int	 = 1		'1  SCHANGE
+Const IT_USABLE:Int		 = 2		'2  SPECIAL
+Const IT_ETC:Int		 = 3		'3  EVENT
+Const IT_WEAPON:Int		 = 4		'4  ARMOR
+Const IT_ARMOR:Int		 = 5		'5  WEAPON
+Const IT_CARD:Int		 = 6		'6  CARD
+Const IT_PETEGG:Int		 = 7		'7  QUEST
+Const IT_PETARMOR:Int	 = 8		'8  BOW
+Const IT_UNKNOWN2:Int	 = 9		'9  BOTHHAND
+Const IT_AMMO:Int		 = 10	'10 ARROW
 Const IT_DELAYCONSUME:Int = 11	'11 ARMORTM
 							'12 ARMORTB
 							'13 ARMORMB
@@ -212,7 +212,7 @@ EndType
 Const SKILL_FLAG_PERMANENT:Int	 = 1
 Const SKILL_FLAG_TEMPORARY:Int	 = 2
 Const SKILL_FLAG_PLAGIARIZED:Int	 = 3
-Const SKILL_FLAG_REPLACED_LV_0:Int = 4 'temporary skill overshadowing permanent skill of level 'N - SKILL_FLAG_REPLACED_LV_0'
+Const SKILL_FLAG_REPLACED_LV_0:Int	 = 4 'temporary skill overshadowing permanent skill of level 'N - SKILL_FLAG_REPLACED_LV_0'
 
 Type s_skill
 	Field id:Short
@@ -572,7 +572,7 @@ EndType
 
 Const GBI_EXP:Int		 = 1
 Const GBI_GUILDLV:Int	 = 2
-Const GBI_SKILLPOINT:Int = 3
+Const GBI_SKILLPOINT:Int	 = 3
 Const GBI_SKILLLV:Int	 = 4
 
 
@@ -592,14 +592,14 @@ Const GD_GUARDUP:Int		 = 10003
 Const GD_EXTENSION:Int		 = 10004
 Const GD_GLORYGUILD:Int		 = 10005
 Const GD_LEADERSHIP:Int		 = 10006
-Const GD_GLORYWOUNDS:Int	 = 10007
+Const GD_GLORYWOUNDS:Int		 = 10007
 Const GD_SOULCOLD:Int		 = 10008
 Const GD_HAWKEYES:Int		 = 10009
-Const GD_BATTLEORDER:Int	 = 10010
+Const GD_BATTLEORDER:Int		 = 10010
 Const GD_REGENERATION:Int	 = 10011
 Const GD_RESTORE:Int		 = 10012
 Const GD_EMERGENCYCALL:Int	 = 10013
-Const GD_DEVELOPMENT:Int	 = 10014
+Const GD_DEVELOPMENT:Int		 = 10014
 'Below skill disabled Until we find out If its still used.
 'Const GD_ITEMEMERGENCYCALL:int= 10015
 Const GD_MAX:Int			 = 10015
@@ -612,26 +612,26 @@ Const JOB_MAGE	:Int				 = 2
 Const JOB_ARCHER:Int			 = 3
 Const JOB_ACOLYTE:Int			 = 4
 Const JOB_MERCHANT:Int			 = 5
-Const JOB_THIEF:Int			 = 6
+Const JOB_THIEF:Int				 = 6
 Const JOB_KNIGHT:Int			 = 7
 Const JOB_PRIEST:Int			 = 8
 Const JOB_WIZARD:Int			 = 9
-Const JOB_BLACKSMITH:Int		 = 10
+Const JOB_BLACKSMITH:Int			 = 10
 Const JOB_HUNTER:Int			 = 11
 Const JOB_ASSASSIN:Int			 = 12
 Const JOB_KNIGHT2:Int			 = 13
 Const JOB_CRUSADER:Int			 = 14
 Const JOB_MONK:Int				 = 15
 Const JOB_SAGE:Int				 = 16
-Const JOB_ROGUE:Int			 = 17
+Const JOB_ROGUE:Int				 = 17
 Const JOB_ALCHEMIST:Int			 = 18
 Const JOB_BARD:Int				 = 19
 Const JOB_DANCER:Int			 = 20
 Const JOB_CRUSADER2:Int			 = 21
 Const JOB_WEDDING:Int			 = 22
 Const JOB_SUPER_NOVICE:Int		 = 23
-Const JOB_GUNSLINGER:Int		 = 24
-Const JOB_NINJA:Int			 = 25
+Const JOB_GUNSLINGER:Int			 = 24
+Const JOB_NINJA:Int				 = 25
 Const JOB_XMAS:Int				 = 26
 Const JOB_SUMMER:Int			 = 27
 Const JOB_HANBOK:Int			 = 28
@@ -643,11 +643,11 @@ Const JOB_MAGE_HIGH:Int			 = 4003
 Const JOB_ARCHER_HIGH:Int		 = 4004
 Const JOB_ACOLYTE_HIGH:Int		 = 4005
 Const JOB_MERCHANT_HIGH:Int		 = 4006
-Const JOB_THIEF_HIGH:Int		 = 4007
+Const JOB_THIEF_HIGH:Int			 = 4007
 Const JOB_LORD_KNIGHT:Int		 = 4008
 Const JOB_HIGH_PRIEST:Int		 = 4009
 Const JOB_HIGH_WIZARD:Int		 = 4010
-Const JOB_WHITESMITH:Int		 = 4011
+Const JOB_WHITESMITH:Int			 = 4011
 Const JOB_SNIPER:Int			 = 4012
 Const JOB_ASSASSIN_CROSS:Int		 = 4013
 Const JOB_LORD_KNIGHT2:Int		 = 4014
@@ -656,8 +656,8 @@ Const JOB_CHAMPION:Int			 = 4016
 Const JOB_PROFESSOR:Int			 = 4017
 Const JOB_STALKER:Int			 = 4018
 Const JOB_CREATOR:Int			 = 4019
-Const JOB_CLOWN:Int			 = 4020
-Const JOB_GYPSY:Int			 = 4021
+Const JOB_CLOWN:Int				 = 4020
+Const JOB_GYPSY:Int				 = 4021
 Const JOB_PALADIN2:Int			 = 4022
 
 Const JOB_BABY:Int				 = 4023
@@ -666,27 +666,27 @@ Const JOB_BABY_MAGE:Int			 = 4025
 Const JOB_BABY_ARCHER:Int		 = 4026
 Const JOB_BABY_ACOLYTE:Int		 = 4027
 Const JOB_BABY_MERCHANT:Int		 = 4028
-Const JOB_BABY_THIEF:Int		 = 4029
+Const JOB_BABY_THIEF:Int			 = 4029
 Const JOB_BABY_KNIGHT:Int		 = 4030
 Const JOB_BABY_PRIEST:Int		 = 4031
 Const JOB_BABY_WIZARD:Int		 = 4032
-Const JOB_BABY_BLACKSMITH:Int	 = 4033
+Const JOB_BABY_BLACKSMITH:Int		 = 4033
 Const JOB_BABY_HUNTER:Int		 = 4034
 Const JOB_BABY_ASSASSIN:Int		 = 4035
 Const JOB_BABY_KNIGHT2:Int		 = 4036
 Const JOB_BABY_CRUSADER:Int		 = 4037
 Const JOB_BABY_MONK:Int			 = 4038
 Const JOB_BABY_SAGE:Int			 = 4039
-Const JOB_BABY_ROGUE:Int		 = 4040
+Const JOB_BABY_ROGUE:Int			 = 4040
 Const JOB_BABY_ALCHEMIST:Int		 = 4041
 Const JOB_BABY_BARD:Int			 = 4042
 Const JOB_BABY_DANCER:Int		 = 4043
 Const JOB_BABY_CRUSADER2:Int		 = 4044
-Const JOB_SUPER_BABY:Int		 = 4045
+Const JOB_SUPER_BABY:Int			 = 4045
 
 Const JOB_TAEKWON:Int			 = 4046
 Const JOB_STAR_GLADIATOR:Int		 = 4047
-Const JOB_STAR_GLADIATOR2:Int	 = 4048
+Const JOB_STAR_GLADIATOR2:Int		 = 4048
 Const JOB_SOUL_LINKER:Int		 = 4049
 
 Const JOB_GANGSI:Int			 = 4050
@@ -701,10 +701,10 @@ Const JOB_MECHANIC:Int			 = 4058
 Const JOB_GUILLOTINE_CROSS:Int	 = 4059
 
 Const JOB_RUNE_KNIGHT_T:Int		 = 4060
-Const JOB_WARLOCK_T:Int		 = 4061
+Const JOB_WARLOCK_T:Int			 = 4061
 Const JOB_RANGER_T:Int			 = 4062
 Const JOB_ARCH_BISHOP_T:Int		 = 4063
-Const JOB_MECHANIC_T:Int		 = 4064
+Const JOB_MECHANIC_T:Int			 = 4064
 Const JOB_GUILLOTINE_CROSS_T:Int	 = 4065
 
 Const JOB_ROYAL_GUARD:Int		 = 4066
@@ -716,12 +716,12 @@ Const JOB_GENETIC:Int			 = 4071
 Const JOB_SHADOW_CHASER:Int		 = 4072
 
 Const JOB_ROYAL_GUARD_T:Int		 = 4073
-Const JOB_SORCERER_T:Int		 = 4074
-Const JOB_MINSTREL_T:Int		 = 4075
-Const JOB_WANDERER_T:Int		 = 4076
+Const JOB_SORCERER_T:Int			 = 4074
+Const JOB_MINSTREL_T:Int			 = 4075
+Const JOB_WANDERER_T:Int			 = 4076
 Const JOB_SURA_T:Int			 = 4077
 Const JOB_GENETIC_T:Int			 = 4078
-Const JOB_SHADOW_CHASER_T:Int	 = 4079
+Const JOB_SHADOW_CHASER_T:Int		 = 4079
 
 Const JOB_RUNE_KNIGHT2:Int		 = 4080
 Const JOB_RUNE_KNIGHT_T2:Int		 = 4081
@@ -745,8 +745,8 @@ Const JOB_BABY_WARLOCK:Int		 = 4097
 Const JOB_BABY_RANGER:Int		 = 4098
 Const JOB_BABY_BISHOP:Int		 = 4099
 Const JOB_BABY_MECHANIC:Int		 = 4100
-Const JOB_BABY_CROSS:Int		 = 4101
-Const JOB_BABY_GUARD:Int		 = 4102
+Const JOB_BABY_CROSS:Int			 = 4101
+Const JOB_BABY_GUARD:Int			 = 4102
 Const JOB_BABY_SORCERER:Int		 = 4103
 Const JOB_BABY_MINSTREL:Int		 = 4104
 Const JOB_BABY_WANDERER:Int		 = 4105
@@ -754,7 +754,7 @@ Const JOB_BABY_SURA:Int			 = 4106
 Const JOB_BABY_GENETIC:Int		 = 4107
 Const JOB_BABY_CHASER:Int		 = 4108
 
-Const JOB_BABY_RUNE2:Int		 = 4109
+Const JOB_BABY_RUNE2:Int			 = 4109
 Const JOB_BABY_GUARD2:Int		 = 4110
 Const JOB_BABY_RANGER2:Int		 = 4111
 Const JOB_BABY_MECHANIC2:Int		 = 4112
@@ -763,10 +763,10 @@ Const JOB_SUPER_NOVICE_E:Int		 = 4190
 Const JOB_SUPER_BABY_E:Int		 = 4191
 
 Const JOB_KAGEROU:Int			 = 4211
-Const JOB_OBORO:Int			 = 4212
+Const JOB_OBORO:Int				 = 4212
 
 Const JOB_MAX:Int				 = 4213
 
 Const SEX_FEMALE:Int	 = 0
 Const SEX_MALE:Int		 = 1
-Const SEX_SERVE:Int	 = 2
+Const SEX_SERVE:Int		 = 2
