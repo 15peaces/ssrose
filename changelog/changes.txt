@@ -1,8 +1,31 @@
 **************************************************************
  SSRSE - SunShine RO-ServerEmulator
 **************************************************************
- SSROSE Changelog Rev. 14
+ SSROSE Changelog Rev. 16
 **************************************************************
+[30/12/2013]
+=Source=
+*Continued coding of CharServer txt source.
+*Maximum packet size was set to 20480 byte until we'll need more. Larger packets cause a buffer overflow And stack corruption even with 2012-04-10 client.
+Since we'll only add support for clients 2012-04-10 and older for now, it would be nonsense to add support for larger packets right now.
+->added Function sock2newfd to store socket data inside socket array
+->added Function sAccept to accept incoming connections 
+->added Function sClose to close connections
+->added Function sSocket to create a new socket
+
+
+[20/11/2013]
+=Source=
+*Started with coding of CharServer txt source.
+-added CharServer.bmx
+-added char/char.bmx
+-added include/lock.bmx to manage temporary database-files
+-added include/utils.bmx
+-added include/socket.bmx
+->added Function fd2sock to return socket data from socket array
+->added Function sock2fd to return id for socket data
+-some cleanup inside mmo.bmx and showmsg.bmx
+
 [01/09/2013]
 *added pre-support for logfiles.
 *Output message handling should be working now.
